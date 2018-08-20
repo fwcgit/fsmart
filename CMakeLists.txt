@@ -1,0 +1,6 @@
+set(C_MAKE_C_COMILEF "arm-linux-gcc")
+cmake_minimum_required(VERSION 2.8.6)
+project(fsmart)
+link_libraries("-lpthread")
+AUX_SOURCE_DIRECTORY(src DIR_SRCS)
+ADD_EXECUTABLE(smart ${DIR_SRCS})
