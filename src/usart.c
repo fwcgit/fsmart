@@ -24,6 +24,14 @@ char 		isRun 	= 0;
 int init_usart(int fd);
 int read_thread();
 
+
+void usart_status_ctl()
+{
+	
+	isConn = 0;
+	
+}
+
 u8 code_check(u8 *data,size_t len)
 {
     int val = 0;
@@ -179,12 +187,76 @@ void parser_device_data(u8 *data,size_t len)
 
 }
 
+int readData(int fd)
+{
+
+		int totalBytes;
+		int bodyLen;
+		ssize_t len;
+		char buff[100];
+		memset(buff,0, sizeof(buff));
+		totalBytes 	= 0;
+		bodyLen 	= 0;
+
+		len = read(fd,buff,sizeof(buff));
+
+		if(len <= 0)
+		{
+			usart_status_ctl();
+		}
+		else
+		{
+			totalBytes = len;
+
+			while(totalBytes < 2)
+			{
+				len = read(fd,buff+totalBytes,sizeof(buff) - totalBytes);
+
+				if(len <= 0)
+				{
+					usart_status_ctl();
+					break;
+				}
+				else
+				{
+					totalBytes+=len;
+				}
+			}
+			
+			if(totalBytes >= 2)
+			{
+				bodyLen = buff[1] & 0x000000ff;
+
+				while(totalBytes -2  < bodyLen)
+				{
+					len = read(fd,buff+totalBytes,sizeof(buff)-totalBytes);
+				
+					if(len <= 0)
+					{
+						usart_status_ctl();
+
+						break;
+					}
+					else
+					{
+						totalBytes+=len;
+					}
+				}
+
+				if(totalBytes >= bodyLen)
+				{
+					parser_device_data(buff,len);
+				}
+
+			}
+		}
+
+}
+
 void *thread_exeute(void *args)
 {
 
-    int ret = 0;
-    u8 buff[100];
-    ssize_t len = 0;
+    int ret;
     int fd = *((int *)args);
     struct timeval time;
     fd_set read_set;
@@ -207,26 +279,14 @@ void *thread_exeute(void *args)
 
         	if(ret < 0)
         	{
-				isConn = 0;
+				usart_status_ctl(0);
         	}
         	else if(ret == 0){
         	}
         	else
         	{
-            	memset(buff,0, sizeof(buff));
-            
-				//usleep(5*1000);
-				len = read(fd,buff,sizeof(buff));
-				if(len <= 0)
-				{
-					isConn = 0;
-				}
-				else
-				{
-					parser_device_data(buff,len);
-				}
-       		 }
-		
+				readData(fd);
+			}
 		}
 		else
 		{

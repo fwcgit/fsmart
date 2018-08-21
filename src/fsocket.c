@@ -98,9 +98,7 @@ void* run_heartbeat(void *args)
 
 			memset(&msg,0,sizeof(msg));
 			msg.head.type 	= MSG_TYPE_HEART;
-			msg.head.index 	= 0;
-			strcpy(msg.body,"123456789");
-			msg.head.len 	= 9;
+			msg.head.len 	= sizeof(msg);
 			send_data((char *)&msg,sizeof(msg));
 
 			printf("send heartbeat data golbalSocketFd :%d \n",golbalSocketFd);	

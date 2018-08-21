@@ -51,6 +51,10 @@ msg.h
 /home/linux/fsmart/src/msg.h
 usart.h
 /home/linux/fsmart/src/usart.h
+string.h
+-
+stdlib.h
+-
 
 /home/linux/fsmart/src/msg.h
 

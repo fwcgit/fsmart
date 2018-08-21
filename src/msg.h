@@ -16,16 +16,16 @@
 
 typedef struct m_head
 {
-    char    type;
-    int     index;
-    int 	len;
+    char    		type;
+    unsigned char 	len;
+	unsigned char	bodySize;
 }msg_head;
 
 typedef struct m_package
 {
-    int     fd;
-    msg_head head;
-    char body[128];
+    msg_head 	head;
+	int 		fd;
+    char 		*body;
 }package;
 
 

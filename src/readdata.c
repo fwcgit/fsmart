@@ -22,7 +22,6 @@ void parserData(char *data,ssize_t len)
 	
 		memset(&msg,0,sizeof(msg));
 		msg.head.type 	= MSG_TYPE_ID;
-		msg.head.index 	= 1;
 		strcpy(msg.body,"123456789");
 		msg.head.len 	= 4;
 		send_data((char *)&msg,sizeof(msg));
@@ -81,7 +80,7 @@ void* run_read(void  *args)
 				else
 				{	
 					parserData(buff,recvLen);
-					printf("recv data len:%ld ---  %s \n",recvLen,buff);
+					printf("recv data len:%d ---  %s \n",recvLen,buff);
 				}
 			}
 		}
