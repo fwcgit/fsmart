@@ -22,9 +22,10 @@ void parserData(char *data,ssize_t len)
 	
 		memset(&msg,0,sizeof(msg));
 		msg.head.type 	= MSG_TYPE_ID;
-		strcpy(msg.body,"123456789");
-		msg.head.len 	= 4;
-		send_data((char *)&msg,sizeof(msg));
+		msg.fd = 0;
+		msg.head.len = sizeof(msg_head)+strlen(cid);
+		strcpy(msg.body,cid);
+		send_msg(msg);
 	}
 }
 

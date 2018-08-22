@@ -18,14 +18,14 @@ typedef struct m_head
 {
     char    		type;
     unsigned char 	len;
-	unsigned char	bodySize;
+
 }msg_head;
 
 typedef struct m_package
 {
     msg_head 	head;
+    char 		body[128];	
 	int 		fd;
-    char 		*body;
 }package;
 
 

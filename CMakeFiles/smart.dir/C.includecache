@@ -39,6 +39,8 @@ msg.h
 /home/linux/fsmart/src/fsocket.h
 stdio.h
 -
+msg.h
+/home/linux/fsmart/src/msg.h
 
 /home/linux/fsmart/src/main.c
 stdio.h

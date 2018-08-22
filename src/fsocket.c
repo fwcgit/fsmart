@@ -14,6 +14,7 @@
 #include "msg.h"
 
 int golbalSocketFd=0;
+char cid[12];
 char isConnect = 0;
 char *server_addr;
 int  server_port;
@@ -98,8 +99,9 @@ void* run_heartbeat(void *args)
 
 			memset(&msg,0,sizeof(msg));
 			msg.head.type 	= MSG_TYPE_HEART;
-			msg.head.len 	= sizeof(msg);
-			send_data((char *)&msg,sizeof(msg));
+			msg.head.len 	= sizeof(msg_head)+strlen(cid);
+			strcpy(msg.body,cid);
+			send_msg(msg);
 
 			printf("send heartbeat data golbalSocketFd :%d \n",golbalSocketFd);	
 		}
@@ -204,13 +206,13 @@ int create_socket(void)
 
 
 
-int connect_server(char *serverAddr,int port)
+int connect_server(char *serverAddr,int port,char *id)
 {
 	int fd;
 
 	server_addr = serverAddr;
 	server_port = port;
-
+	strcpy(cid,id);
 
 	isConnect = 0;
 
@@ -223,13 +225,85 @@ int connect_server(char *serverAddr,int port)
 	return 0;
 }
 
-
-int send_data(char *data,size_t len)
+int send_msg(package msg)
 {
+	int i;
 	int err = 0;
 	ssize_t ret = 0;
 	fd_set wfds;
 	struct timeval tv;
+	char *data;
+
+	if(isConnect)
+	{
+
+		FD_ZERO(&wfds);
+		FD_SET(golbalSocketFd,&wfds);
+		tv.tv_sec = 0;
+		tv.tv_usec = 500;
+
+		ret = select(golbalSocketFd+1,NULL,&wfds,NULL,&tv);
+
+		if(ret > 0)
+		{
+
+			data = (char *)malloc(sizeof(char)*msg.head.len);
+			memcpy(data,(char*)&msg,sizeof(msg_head));
+			memcpy(data+sizeof(msg_head),msg.body,msg.head.len -sizeof(msg_head));
+			ret = write(golbalSocketFd,data,msg.head.len);
+			free(data);
+
+			if(ret == 0)
+			{
+				err = -1;
+
+				handler_socket_status(0);
+			}
+			else if(ret < 0)
+			{
+				err = -1;
+				handler_socket_status(errno);
+			}
+			else
+			{
+				err = 0;
+			}
+		}
+		else if(ret < 0)
+		{
+			err = -1;
+			handler_socket_status(errno);
+		}
+		else
+		{
+			err = -1;
+			printf("write timeout \n");
+		}
+
+	
+	}
+	else
+	{
+		err = -1;
+	}
+
+	return err;
+}
+
+int send_data(char *data,size_t len)
+{
+	int i;
+	int err = 0;
+	ssize_t ret = 0;
+	fd_set wfds;
+	struct timeval tv;
+
+	for(i = 0 ; i < len ; i++)
+	{
+		printf("%X ",data[i]);
+	}
+
+	printf("\n");
 
 	if(isConnect)
 	{
