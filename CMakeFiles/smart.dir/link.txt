@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/smart.dir/src/main.c.o CMakeFiles/smart.dir/src/fsocket.c.o CMakeFiles/smart.dir/src/usart.c.o CMakeFiles/smart.dir/src/readdata.c.o  -o smart -rdynamic -lpthread 
