@@ -9,6 +9,10 @@ extern char cid[12];
 
 int connect_server(char *serverAddr,int port,char *id);
 
+int connect_socket(int fd,char *serverAddr,int port);
+
+int create_socket(void);
+
 int close_connect();
 
 void handler_socket_status(int ret);

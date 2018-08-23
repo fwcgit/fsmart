@@ -12,6 +12,7 @@
 #include <errno.h>
 #include <stdlib.h>
 #include "msg.h"
+#include <pthread.h>
 
 int golbalSocketFd=0;
 char cid[12];
