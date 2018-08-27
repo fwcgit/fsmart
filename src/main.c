@@ -5,6 +5,17 @@
 #include "usart.h"
 #include <string.h>
 #include <stdlib.h>
+#include <pthread.h>
+#include <stdio.h>
+
+void *connectThread(void *args)
+{
+	char str[12];
+	sprintf(str,"123ab321",*((int *)args));
+	connect_server("10.18.20.40",28898,str);
+	getchar();
+	return NULL;
+}
 
 int main(int argc,char *argv[])	
 {
@@ -25,9 +36,18 @@ int main(int argc,char *argv[])
 	connect_server("127.0.0.1",28898,"123321");
 	}
 	****/
+#if 0	
+	int i;
+	pthread_t pids[50];
+	for(i = 0 ; i < 5 ; i++)
+	{
+		pthread_create(&pids[i],NULL,connectThread,&i);
+		sleep(10);
 
-	connect_server("127.0.0.1",28898,"123321");
-	//open_usart("/dev/ttyUSB0");
+	}
+#endif	
+	connect_server("10.18.20.40",28898,"a115");
+//	open_usart("/dev/ttyUSB0");
 	getchar();
 
 	close_usart();
