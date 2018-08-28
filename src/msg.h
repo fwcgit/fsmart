@@ -16,7 +16,7 @@
 
 typedef struct m_head
 {
-    char    		type;
+    unsigned char   type;
     unsigned char 	len;
 
 }msg_head;

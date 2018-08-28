@@ -46,7 +46,7 @@ int main(int argc,char *argv[])
 
 	}
 #endif	
-	connect_server("10.18.20.40",28898,"a115");
+	connect_server("10.18.75.100",28898,"jabc001");
 //	open_usart("/dev/ttyUSB0");
 	getchar();
 

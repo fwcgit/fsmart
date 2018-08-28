@@ -28,6 +28,15 @@ void parserData(char *data,ssize_t len)
 		strcpy(msg.body,cid);
 		send_msg(msg);
 	}
+	else
+	{
+		memcpy(&msg,data,len);
+
+		if(msg.head.type == MSG_TYPE_CMD)
+		{
+			printf("excute cmd %d\n",msg.body[0]);	
+		}
+	}
 }
 
 void* run_read(void  *args)

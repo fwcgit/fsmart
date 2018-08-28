@@ -102,24 +102,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named smart40
+# Target rules for targets named smart_j1
 
 # Build rule for target.
-smart40: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 smart40
-.PHONY : smart40
+smart_j1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 smart_j1
+.PHONY : smart_j1
 
 # fast build rule for target.
-smart40/fast:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/build
-.PHONY : smart40/fast
+smart_j1/fast:
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/build
+.PHONY : smart_j1/fast
 
 src/fsocket.o: src/fsocket.c.o
 .PHONY : src/fsocket.o
 
 # target to build an object file
 src/fsocket.c.o:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/fsocket.c.o
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/fsocket.c.o
 .PHONY : src/fsocket.c.o
 
 src/fsocket.i: src/fsocket.c.i
@@ -127,7 +127,7 @@ src/fsocket.i: src/fsocket.c.i
 
 # target to preprocess a source file
 src/fsocket.c.i:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/fsocket.c.i
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/fsocket.c.i
 .PHONY : src/fsocket.c.i
 
 src/fsocket.s: src/fsocket.c.s
@@ -135,7 +135,7 @@ src/fsocket.s: src/fsocket.c.s
 
 # target to generate assembly for a file
 src/fsocket.c.s:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/fsocket.c.s
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/fsocket.c.s
 .PHONY : src/fsocket.c.s
 
 src/main.o: src/main.c.o
@@ -143,7 +143,7 @@ src/main.o: src/main.c.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/main.c.o
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -151,7 +151,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/main.c.i
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -159,7 +159,7 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/main.c.s
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/main.c.s
 .PHONY : src/main.c.s
 
 src/readdata.o: src/readdata.c.o
@@ -167,7 +167,7 @@ src/readdata.o: src/readdata.c.o
 
 # target to build an object file
 src/readdata.c.o:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/readdata.c.o
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/readdata.c.o
 .PHONY : src/readdata.c.o
 
 src/readdata.i: src/readdata.c.i
@@ -175,7 +175,7 @@ src/readdata.i: src/readdata.c.i
 
 # target to preprocess a source file
 src/readdata.c.i:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/readdata.c.i
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/readdata.c.i
 .PHONY : src/readdata.c.i
 
 src/readdata.s: src/readdata.c.s
@@ -183,7 +183,7 @@ src/readdata.s: src/readdata.c.s
 
 # target to generate assembly for a file
 src/readdata.c.s:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/readdata.c.s
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/readdata.c.s
 .PHONY : src/readdata.c.s
 
 src/usart.o: src/usart.c.o
@@ -191,7 +191,7 @@ src/usart.o: src/usart.c.o
 
 # target to build an object file
 src/usart.c.o:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/usart.c.o
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/usart.c.o
 .PHONY : src/usart.c.o
 
 src/usart.i: src/usart.c.i
@@ -199,7 +199,7 @@ src/usart.i: src/usart.c.i
 
 # target to preprocess a source file
 src/usart.c.i:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/usart.c.i
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/usart.c.i
 .PHONY : src/usart.c.i
 
 src/usart.s: src/usart.c.s
@@ -207,7 +207,7 @@ src/usart.s: src/usart.c.s
 
 # target to generate assembly for a file
 src/usart.c.s:
-	$(MAKE) -f CMakeFiles/smart40.dir/build.make CMakeFiles/smart40.dir/src/usart.c.s
+	$(MAKE) -f CMakeFiles/smart_j1.dir/build.make CMakeFiles/smart_j1.dir/src/usart.c.s
 .PHONY : src/usart.c.s
 
 # Help Target
@@ -218,7 +218,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... smart40"
+	@echo "... smart_j1"
 	@echo "... src/fsocket.o"
 	@echo "... src/fsocket.i"
 	@echo "... src/fsocket.s"
